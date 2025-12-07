@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quantico&family=Roboto&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/3318035e44.js"></script>
+    <link rel="icon" href="media/logo.png" type="image/png" />
+    <title>Impresaurios 3D Printing</title>
+  </head>
+  <body onload="displayProdIndex()">
+    <!-- Navbar -->
+    <nav class="nav-container">
+      <!-- Website nav-menu -->
+      <div class="nav-web">
+
+        <div class="nav-links">
+        <a href="index.html" id="logo" title="Home"><img src="media/logo.png" alt="logo" id=logo/></a>  
+        <a href="products.html">Products</a>
+        </div>
+
+        <span class="search" 
+            ><i class="fas fa-search"></i
+            ><input
+              type="search"
+              id="search-input"
+              name="search"
+              placeholder="Search"
+          />
+        </span>
+
+        <span class="user-wrapper">
+            <a href="login.php"><i class="fa-solid fa-user"></i></a>
+            <a href="shopping-cart.html"
+              ><i class="fa-solid fa-cart-shopping" value="0"></i
+            ></a>
+          </span>
+
+        </div>
+      
+      <!-- Mobile nav-menu -->
+      <div class="nav-mobile">
+        <a href="index.html" id="logo" title="Home"
+          ><img src="media/logo.png" alt="logo"
+        /></a>
+        <div id="myLinks">
+          <a href="products.html">Products</a>
+          <a href="login.php">Login</a>
+          <a href="register.php">Register</a>
+          <a href="shop.php">Cart</a>
+          
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="hamburgerMenu()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </nav>
+    <!-- Main -->
+    <main>
+      <!-- Header -->
+      <header class="header">
+        <div class="hero-image">
+          <img src="media/header.png" />
+        </div>
+      </header>
+      
+      <grid-layout>
+        <section class="about-us">
+          <h1 class="title">ABOUT US</h1>
+          <br />
+          <p>
+            Welcome to Impresaurios, your number one source for all things 3D
+            printing. We're dedicated to giving you the very best of 3D printers,
+            with a focus on dependability, customer service, and uniqueness.
+          </p>
+          <br />
+          <p>
+            Founded in 2020 by Juan Camilo Loaiza, Sebastian Jimenez and Juan Manuel Molina, Impresaurios has come a long way
+            from its beginnings in a home office. When they first started
+            out, their passion for eco-friendly 3D printing drove them to start
+            this business.
+          </p>
+          <br />
+          <p>
+            We hope you enjoy our products as much as we enjoy offering them to
+            you. If you have any questions or comments, please don't hesitate to
+            contact us.
+          </p>
+          <br />
+          <p>Sincerely, <br />Juan Camilo Loaiza Alarcon</p>
+        </section>
+
+        <section class="trending-section">
+          <h1 class="title">TRENDING NOW</h1>
+          <div class="products-container" id="prod-index"></div>
+        </section>
+
+        <section class="announcements">
+          <H1>ANNOUNCEMENTS</H1>
+          <br />
+          <img src="media/sale.jpg" alt="announcement" />
+          <p>
+            HOLIDAY SALE! Get up to 20% off on selected 3D printers and accessories
+            from December 1st to December 31st. Don't miss out on these limited-time
+            offers and upgrade your 3D printing experience today!
+          </p>
+        </section>
+      </grid-layout>
+
+    </main>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-menu">
+        <nav class="footer-nav-column">
+          <ul class="footer-nav-container">
+            <li class="li-title">COMPANY </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="register.php">Register</a></li>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="shop.php">Shopping Cart</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav-column subscribe">
+          <ul class="footer-nav-container">
+            <li class="li-title">SUBSCRIBE</li>
+            <p>
+              Take 5% off your first order when you sign up for our newsletter.
+            </p>
+            <span class="email"
+              ><input
+                type="email"
+                id="subscribe-input"
+                name="email"
+                placeholder="Email"
+              /><button id="subscribe-btn">Subscribe</button></span
+            >
+          </ul>
+        </nav>
+
+        <div class="social-media">
+          <a href="https://www.facebook.com/" target="_blank"
+            ><i class="fab fa-facebook-square"></i
+          ></a>
+          <a href="https://twitter.com/" target="_blank"
+            ><i class="fab fa-twitter-square"></i
+          ></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.youtube.com/" target="_blank"
+            ><i class="fab fa-youtube-square"></i
+          ></a>
+          <a href="https://www.pinterest.com/" target="_blank"
+            ><i class="fab fa-pinterest-square"></i
+          ></a>
+        </div>
+        <div class="lang-pay">
+      </div>
+      <!-- Social media -->
+      
+        <!-- Language -->
+        <div class="language">
+          <i class="fa-solid fa-globe" title="Choose language"></i>
+        </div>
+        <!-- Paying methods -->
+        <div class="paying-methods">
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-brands fa-cc-paypal"></i>
+          <i class="fa-brands fa-cc-apple-pay"></i>
+        </div>
+      </div>
+      <p class="copyright">Copyright &copy; 2025 | Juan Camilo Loaiza Alarcon | Contact: ingjcloaiza@gmail.com</p>
+    </footer>
+  </body>
+</html>
