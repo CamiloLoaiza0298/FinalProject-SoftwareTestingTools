@@ -220,27 +220,158 @@ const hamburgerMenu = () => {
 
 // Password toggle and validation for register.html
 (function(){
-        const toggle = document.getElementById('toggle-pass');
-        if(toggle){
-          toggle.addEventListener('change', function(){
-            const p = document.getElementById('password');
-            const c = document.getElementById('confirm-password');
-            const type = this.checked ? 'text' : 'password';
-            if(p) p.type = type;
-            if(c) c.type = type;
-          });
-        }
+  const toggle = document.getElementById('toggle-pass');
+  if (toggle) {
+    toggle.addEventListener('change', function () {
+      const p = document.getElementById('password');
+      const c = document.getElementById('confirm-password');
+      const type = this.checked ? 'text' : 'password';
+      if (p) p.type = type;
+      if (c) c.type = type;
+    });
+  }
 
-        const form = document.getElementById('register-form');
-        if(form){
-          form.addEventListener('submit', function(e){
-            const p = document.getElementById('password').value;
-            const c = document.getElementById('confirm-password').value;
-            const msg = document.getElementById('register-msg');
-            if(p !== c){
-              e.preventDefault();
-              if(msg) msg.textContent = 'Passwords do not match.';
-            }
-          });
+  const form = document.getElementById('register-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      const pEl = document.getElementById('password');
+      const cEl = document.getElementById('confirm-password');
+      const msg = document.getElementById('register-msg');
+      const p = pEl ? pEl.value : '';
+      const c = cEl ? cEl.value : '';
+      // Regex: min 8 chars, at least one uppercase, one lowercase, one digit, one special char
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+      let error = '';
+      if (p !== c) {
+        error = 'Passwords do not match.';
+      } else if (!regex.test(p)) {
+        error = 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.';
+      }
+      if (error) {
+        e.preventDefault();
+        if (msg) {
+          msg.textContent = error;
+          msg.className = 'form-msg error';
         }
-      })();
+      }
+    });
+  }
+})();
+
+// Forgot-password handler (separate from login)
+(function(){
+  const resetUsers = [
+    { username: 'testuser1', code: '1234' },
+    { username: 'sampleuser', code: '5678' },
+    { username: 'demoaccount', code: '91011' }
+  ];
+
+  const toggle = document.getElementById('toggle-pass');
+  if (toggle) {
+    toggle.addEventListener('change', function () {
+      const p = document.getElementById('new-password');
+      const c = document.getElementById('confirm-new-password');
+      const type = this.checked ? 'text' : 'password';
+      if (p) p.type = type;
+      if (c) c.type = type;
+    });
+  }
+
+  const form = document.getElementById('login-form');
+  if (form && document.getElementById('code')) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const usernameEl = document.getElementById('username');
+      const codeEl = document.getElementById('code');
+      const passwordEl = document.getElementById('new-password');
+      const confirmEl = document.getElementById('confirm-new-password');
+      const msg = document.getElementById('login-msg');
+
+      if (msg) { msg.textContent = ''; msg.className = 'form-msg'; }
+
+      const user = usernameEl ? usernameEl.value.trim() : '';
+      const code = codeEl ? codeEl.value.trim() : '';
+      const pass = passwordEl ? passwordEl.value : '';
+      const confirm = confirmEl ? confirmEl.value : '';
+
+      if (!user || !code || !pass || !confirm) {
+        if (msg) { msg.textContent = 'Please fill out all fields.'; msg.className = 'form-msg error'; }
+        return;
+      }
+
+      const entry = resetUsers.find(u => u.username === user && u.code === code);
+      if (!entry) {
+        if (msg) { msg.textContent = 'Invalid username or code.'; msg.className = 'form-msg error'; }
+        return;
+      }
+
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+      if (!regex.test(pass)) {
+        if (msg) { msg.textContent = 'Password must be at least 8 characters and include uppercase, lowercase, number, and special character.'; msg.className = 'form-msg error'; }
+        return;
+      }
+
+      if (pass !== confirm) {
+        if (msg) { msg.textContent = 'Passwords do not match.'; msg.className = 'form-msg error'; }
+        return;
+      }
+
+      if (msg) { msg.textContent = 'Password reset successful. Redirecting to login...'; msg.className = 'form-msg success'; }
+      try { localStorage.setItem('loggedInUser', user); } catch (err) {}
+      setTimeout(() => { window.location.href = 'login.html'; }, 900);
+    });
+  }
+})();
+
+// Login validation
+(function(){
+  const validUsers = [
+    { username: 'testuser1', password: 'password123' },
+    { username: 'sampleuser', password: 'mypassword' },
+    { username: 'demoaccount', password: 'demopass' }
+  ];
+
+  const form = document.getElementById('login-form');
+  if (!form || document.getElementById('code')) return;
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const usernameEl = document.getElementById('username');
+      const passwordEl = document.getElementById('password');
+      const msg = document.getElementById('login-msg');
+      const user = usernameEl ? usernameEl.value.trim() : '';
+      const pass = passwordEl ? passwordEl.value : '';
+
+      // Clear previous message classes/text
+      if (msg) {
+        msg.textContent = '';
+        msg.className = 'form-msg';
+      }
+
+      if (!user || !pass) {
+        if (msg) {
+          msg.textContent = 'Please fill out both username and password.';
+          msg.className = 'form-msg error';
+        }
+        return;
+      }
+
+      const match = validUsers.some(u => u.username === user && u.password === pass);
+      if (match) {
+        if (msg) {
+          msg.textContent = 'Login successful. Redirecting...';
+          msg.className = 'form-msg success';
+        }
+        // Save login state (optional) so other pages can check it
+        try { localStorage.setItem('loggedInUser', user); } catch (err) {}
+        setTimeout(() => { window.location.href = 'index.html'; }, 700);
+      } else {
+        if (msg) {
+          msg.textContent = 'Invalid username or password.';
+          msg.className = 'form-msg error';
+        }
+      }
+    });
+  }
+})();
+
