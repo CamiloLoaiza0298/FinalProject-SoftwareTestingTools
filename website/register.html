@@ -70,48 +70,34 @@
         </div>
       </header>
       
-      <grid-layout>
-        <section class="about-us">
-          <h1 class="title">ABOUT US</h1>
-          <br />
-          <p>
-            Welcome to Impresaurios, your number one source for all things 3D
-            printing. We're dedicated to giving you the very best of 3D printers,
-            with a focus on dependability, customer service, and uniqueness.
-          </p>
-          <br />
-          <p>
-            Founded in 2020 by Juan Camilo Loaiza, Sebastian Jimenez and Juan Manuel Molina, Impresaurios has come a long way
-            from its beginnings in a home office. When they first started
-            out, their passion for eco-friendly 3D printing drove them to start
-            this business.
-          </p>
-          <br />
-          <p>
-            We hope you enjoy our products as much as we enjoy offering them to
-            you. If you have any questions or comments, please don't hesitate to
-            contact us.
-          </p>
-          <br />
-          <p>Sincerely, <br />Juan Camilo Loaiza Alarcon</p>
-        </section>
+        <section class="register-section">
+          <h1>Register</h1>
+          <div class="form-card">
+            <form action="created.html" class="register-form" id="register-form">
+              <div id="register-msg" class="form-msg" aria-live="polite"></div>
 
-        <section class="trending-section">
-          <h1 class="title">TRENDING NOW</h1>
-          <div class="products-container" id="prod-index"></div>
-        </section>
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" placeholder="Choose a username" required />
 
-        <section class="announcements">
-          <H1>ANNOUNCEMENTS</H1>
-          <br />
-          <img src="media/sale.jpg" alt="announcement" />
-          <p>
-            HOLIDAY SALE! Get up to 20% off on selected 3D printers and accessories
-            from December 1st to December 31st. Don't miss out on these limited-time
-            offers and upgrade your 3D printing experience today!
-          </p>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+              <label for="age">Age</label>
+              <input type="number" id="age" name="age" placeholder="Your age" required min="13" />
+
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Create a password" required />
+
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" name="confirm-password" placeholder="Repeat your password" required />
+
+              <label class="show-pass"><input type="checkbox" id="toggle-pass" /> Show password</label>
+
+              <button type="submit" class="register-btn">Create account</button>
+            </form>
+          </div>
+
         </section>
-      </grid-layout>
 
     </main>
     <!-- Footer -->
@@ -123,8 +109,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="register.html">Register</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="shop.php">Shopping Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="shop.html">Shopping Cart</a></li>
           </ul>
         </nav>
 
@@ -180,5 +166,8 @@
       </div>
       <p class="copyright">Copyright &copy; 2025 | Juan Camilo Loaiza Alarcon | Contact: ingjcloaiza@gmail.com</p>
     </footer>
+    <script>
+      
+    </script>
   </body>
 </html>

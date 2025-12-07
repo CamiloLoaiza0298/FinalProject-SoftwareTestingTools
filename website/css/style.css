@@ -316,50 +316,120 @@ grid-layout {
     margin-bottom: 1rem;
 }
 
-/* Icons Section */
-.icons-section {
+/* Register section*/
+
+.register-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    margin: 0;
     width: 100%;
 }
 
-.container-icons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    padding: 1rem 0.5rem;
-    margin: 1rem 0;
-}
-
-.cat-icon {
+.login-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: space-between;
-    width: 10rem;
-    height: 10rem;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    margin: 0;
+    width: 100%;
 }
 
-.icon-circle {
+/* Form card and inputs for register */
+.form-card {
+    background: #ffffff;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    max-width: 480px;
+    width: 90%;
+    margin: 1rem auto;
+}
+
+.register-form, .login-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 4.375rem;
-    width: 4.375rem;
-    background-color: #00e5b0;
-    border-radius: 50%;
-    padding: 0.625rem;
-    margin: 0.5rem;
+    gap: 0.6rem;
+    align-items: stretch;
 }
 
-.icon-title {
-    font-size: 1.2rem;
-    font-family: Varela Round, Tahoma, Helvetica, Verdana, Arial, sans-serif;
+.register-form label, .login-form label {
+    font-weight: 600;
+    color: #1d1c29;
+    margin-bottom: 0.25rem;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="number"],
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    padding: 0.7rem 0.75rem;
+    border-radius: 0.35rem;
+    border: 1px solid #cfcfcf;
+    background: #fff;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.register-form input:focus,
+.login-form input:focus {
+    border-color: #00e5b0;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 229, 176, 0.08);
+}
+
+.form-msg {
+    min-height: 1.25rem;
+    font-size: 0.95rem;
+    color: #d8000c;
+}
+
+.show-pass {
+    font-size: 0.95rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.register-btn {
+    margin-top: 0.5rem;
+    align-self: center;
+    width: 100%;
+    max-width: 240px;
+    padding: 0.9rem;
+    border-radius: 0.35rem;
+    background-color: #00c992;
+    border: 2px solid #00c992;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.register-btn:hover {
+    background-color: #039f73;
+    border-color: #039f73;
+}
+
+.info{
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #414141;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+@media only screen and (max-width: 480px) {
+    .form-card { padding: 1rem; }
+    .register-btn { max-width: 100%; }
 }
 
 /* Shopping Cart Section */

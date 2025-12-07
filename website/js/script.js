@@ -216,3 +216,31 @@ const hamburgerMenu = () => {
     x.style.display = "block";
   }
 };
+
+
+// Password toggle and validation for register.html
+(function(){
+        const toggle = document.getElementById('toggle-pass');
+        if(toggle){
+          toggle.addEventListener('change', function(){
+            const p = document.getElementById('password');
+            const c = document.getElementById('confirm-password');
+            const type = this.checked ? 'text' : 'password';
+            if(p) p.type = type;
+            if(c) c.type = type;
+          });
+        }
+
+        const form = document.getElementById('register-form');
+        if(form){
+          form.addEventListener('submit', function(e){
+            const p = document.getElementById('password').value;
+            const c = document.getElementById('confirm-password').value;
+            const msg = document.getElementById('register-msg');
+            if(p !== c){
+              e.preventDefault();
+              if(msg) msg.textContent = 'Passwords do not match.';
+            }
+          });
+        }
+      })();
