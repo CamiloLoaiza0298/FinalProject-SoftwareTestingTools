@@ -21,20 +21,46 @@ const prod3 = {
   price: 30,
   description: "Printed in 3D, this Darth Vader can holder keeps your drinks cool while showcasing your love for Star Wars.",
 };
+const prod4 = {
+  imgSrc: "media/octopus.jpg",
+  name: "Articulated Octopus Figurine",
+  price: 15,
+  description: "Printed in 3D, this octopus figurine features movable tentacles for added realism and playability.",
+};
+const prod5 = {
+  imgSrc: "media/phone.webp",
+  name: "Smartphone Mechanical Stand",
+  price: 25,
+  description: "Printed in 3D, this mechanical smartphone stand offers adjustable angles and a sleek design for optimal viewing.",
+};
+const prod6 = {
+  imgSrc: "media/joycon.webp",
+  name: "Nintendo Switch Joy-Con Grip",
+  price: 20,
+  description: "Printed in 3D, this Nintendo Switch Joy-Con grip offers a comfortable and ergonomic design for extended gaming sessions.",
+};
+const prod7 = {
+  imgSrc: "media/dragon.webp",
+  name: "Dragon Pen Holder",
+  price: 30,
+  description: "Printed in 3D, this dragon pen holder keeps your pens organized while adding a touch of fantasy to your desk.",
+};
+const prod8 = {
+  imgSrc: "media/groot.webp",
+  name: "Baby Groot Figurine",
+  price: 30,
+  description: "Printed in 3D, this Baby Groot figurine adds a touch of charm and whimsy to any space.",
+};
 
 const arr = [
   prod1,
   prod2,
   prod3,
-  prod1,
-  prod2,
-  prod3,
-  prod1,
-  prod2,
-  prod3,
-  prod1,
-  prod2,
-  prod3,
+  prod4,
+  prod5,
+  prod6,
+  prod7,
+  prod8
 ];
 
 // Function to display products on products.html
