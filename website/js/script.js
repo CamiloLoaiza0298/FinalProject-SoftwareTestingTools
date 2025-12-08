@@ -64,8 +64,19 @@ const arr = [
 ];
 
 // Function to display products on products.html
-const displayProducts = () => {
+// If `query` is provided, filter products by name or description (case-insensitive)
+const displayProducts = (query) => {
+  if (!prodContProd) return;
+  // clear existing
+  prodContProd.innerHTML = "";
+  const q = query ? query.trim().toLowerCase() : "";
   for (let i = 0; i < arr.length; i++) {
+    // filter if query exists
+    if (q) {
+      const name = arr[i].name.toLowerCase();
+      const desc = (arr[i].description || "").toLowerCase();
+      if (!name.includes(q) && !desc.includes(q)) continue;
+    }
     // Get values
     let imgSrc = arr[i].imgSrc;
     let name = arr[i].name;
@@ -77,6 +88,7 @@ const displayProducts = () => {
 
 // Function to display products on index.html
 const displayProdIndex = () => {
+  if (prodContIndex) prodContIndex.innerHTML = "";
   for (let i = 0; i < 3; i++) {
     // Get values
     let imgSrc = arr[i].imgSrc;
@@ -88,6 +100,7 @@ const displayProdIndex = () => {
 };
 
 const displayProdCart = () => {
+  if (prodContCart) prodContCart.innerHTML = "";
   for (let i = 0; i < 2; i++) {
     // Get values
     let imgSrc = arr[i].imgSrc;
@@ -95,6 +108,44 @@ const displayProdCart = () => {
     let price = arr[i].price;
     createCartProd(imgSrc, name, price);
   }
+};
+
+// Helper: read URL query parameter
+const getQueryParam = (name) => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  } catch (e) {
+    return null;
+  }
+};
+
+// Setup search input behavior across pages
+const setupSearch = () => {
+  const searchInput = document.getElementById('search-input');
+  if (!searchInput) return;
+
+  const isProductsPage = !!document.getElementById('products');
+
+  const handleInput = (e) => {
+    const value = searchInput.value || "";
+    const q = value.trim();
+    if (isProductsPage) {
+      // live filter on products page
+      displayProducts(q);
+    } else {
+      // on other pages only navigate on Enter
+      if (e.type === 'keydown' && e.key === 'Enter') {
+        const target = 'products.html' + (q ? `?q=${encodeURIComponent(q)}` : '');
+        window.location.href = target;
+      }
+    }
+  };
+
+  // Enter key (both pages)
+  searchInput.addEventListener('keydown', handleInput);
+  // live updates only when on products page
+  if (isProductsPage) searchInput.addEventListener('input', handleInput);
 };
 
 // Function to create elements
@@ -187,6 +238,16 @@ const addToCart = (product) => {
 // Initialize cart count when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
+  setupSearch();
+  // If products page and URL has `q`, use it to filter
+  if (document.getElementById('products')) {
+    const q = getQueryParam('q');
+    if (q) {
+      const input = document.getElementById('search-input');
+      if (input) input.value = q;
+      displayProducts(q);
+    }
+  }
 });
 
 const createCartProd = (imgSrc, name, price) => {
