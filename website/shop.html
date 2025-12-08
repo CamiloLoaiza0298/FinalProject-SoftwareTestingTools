@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quantico&family=Roboto&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/3318035e44.js"></script>
+    <link rel="icon" href="media/logo.png" type="image/png" />
+    <title>Impresaurios 3D Printing</title>
+  </head>
+  <body onload="displayProducts()">
+    <!-- Navbar -->
+    <nav class="nav-container">
+      <!-- Website nav-menu -->
+      <div class="nav-web">
+
+        <div class="nav-links">
+        <a href="index.html" id="logo" title="Home"><img src="media/logo.png" alt="logo" id=logo/></a>  
+        <a href="products.html">Products</a>
+        </div>
+
+        <span class="search" 
+            ><i class="fas fa-search"></i
+            ><input
+              type="search"
+              id="search-input"
+              name="search"
+              placeholder="Search"
+          />
+        </span>
+
+        <span class="user-wrapper">
+            <a href="login.html"><i class="fa-solid fa-user"></i></a>
+            <a href="shopping-cart.html"
+              ><i class="fa-solid fa-cart-shopping" value="0"></i
+            ></a>
+          </span>
+
+        </div>
+      
+      <!-- Mobile nav-menu -->
+      <div class="nav-mobile">
+        <a href="index.html" id="logo" title="Home"
+          ><img src="media/logo.png" alt="logo"
+        /></a>
+        <div id="myLinks">
+          <a href="products.html">Products</a>
+          <a href="login.html">Login</a>
+          <a href="register.html">Register</a>
+          <a href="shop.html">Cart</a>
+          
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="hamburgerMenu()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </nav>
+    <!-- Main -->
+    <main>
+      <!-- Header -->
+      <header class="header">
+        <div class="hero-image">
+          <img src="media/header.png" />
+        </div>
+      </header>
+      
+      <div class="summary-shopping-cart">
+        <div class="shopping-cart">
+          <h2 class="cart-title">SHOPPING CART</h2>
+          <div class="cart-prod-container" id="prod-cart"></div>
+          <button>Continue Shopping</button>
+        </div>
+        <div class="order-summary">
+          <h2 class="cart-title">ORDER SUMMARY</h2>
+          <div class="order-summary-column">
+            <div class="order-summary-row">
+              <p>Subtotal</p>
+              <p>$898</p>
+            </div>
+            <div class="order-summary-row">
+              <p>Delivery</p>
+              <p style="text-decoration: line-through">$29</p>
+            </div>
+            <div class="order-summary-row">
+              <p>Add a promo code</p>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="order-summary-row">
+              <p>Total</p>
+              <p>$898</p>
+            </div>
+            <div class="order-summary-column" id="buttons-column">
+              <button class="order-summary-button">CHECKOUT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-menu">
+        <nav class="footer-nav-column">
+          <ul class="footer-nav-container">
+            <li class="li-title">COMPANY </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="shop.html">Shopping Cart</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav-column subscribe">
+          <ul class="footer-nav-container">
+            <li class="li-title">SUBSCRIBE</li>
+            <p>
+              Take 5% off your first order when you sign up for our newsletter.
+            </p>
+            <span class="email"
+              ><input
+                type="email"
+                id="subscribe-input"
+                name="email"
+                placeholder="Email"
+              /><button id="subscribe-btn">Subscribe</button></span
+            >
+          </ul>
+        </nav>
+
+        <div class="social-media">
+          <a href="https://www.facebook.com/" target="_blank"
+            ><i class="fab fa-facebook-square"></i
+          ></a>
+          <a href="https://twitter.com/" target="_blank"
+            ><i class="fab fa-twitter-square"></i
+          ></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.youtube.com/" target="_blank"
+            ><i class="fab fa-youtube-square"></i
+          ></a>
+          <a href="https://www.pinterest.com/" target="_blank"
+            ><i class="fab fa-pinterest-square"></i
+          ></a>
+        </div>
+        <div class="lang-pay">
+      </div>
+      <!-- Social media -->
+      
+        <!-- Language -->
+        <div class="language">
+          <i class="fa-solid fa-globe" title="Choose language"></i>
+        </div>
+        <!-- Paying methods -->
+        <div class="paying-methods">
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-brands fa-cc-paypal"></i>
+          <i class="fa-brands fa-cc-apple-pay"></i>
+        </div>
+      </div>
+      <p class="copyright">Copyright &copy; 2025 | Juan Camilo Loaiza Alarcon | Contact: ingjcloaiza@gmail.com</p>
+    </footer>
+    <script>
+      
+    </script>
+  </body>
+</html>
