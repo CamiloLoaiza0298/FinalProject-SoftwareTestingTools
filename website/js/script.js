@@ -42,7 +42,7 @@ const prod6 = {
 const prod7 = {
   imgSrc: "media/dragon.webp",
   name: "Dragon Pen Holder",
-  price: 30,
+  price: 35,
   description: "Printed in 3D, this dragon pen holder keeps your pens organized while adding a touch of fantasy to your desk.",
 };
 const prod8 = {
@@ -100,14 +100,22 @@ const displayProdIndex = () => {
 };
 
 const displayProdCart = () => {
-  if (prodContCart) prodContCart.innerHTML = "";
-  for (let i = 0; i < 2; i++) {
-    // Get values
-    let imgSrc = arr[i].imgSrc;
-    let name = arr[i].name;
-    let price = arr[i].price;
-    createCartProd(imgSrc, name, price);
+  if (!prodContCart) return;
+  prodContCart.innerHTML = "";
+  const cart = getCart();
+  if (!cart || cart.length === 0) {
+    const empty = document.createElement('p');
+    empty.innerText = 'Your cart is empty.';
+    empty.className = 'cart-empty';
+    prodContCart.appendChild(empty);
+    updateOrderSummary && updateOrderSummary();
+    return;
   }
+  for (let i = 0; i < cart.length; i++) {
+    const item = cart[i];
+    createCartProd(item.imgSrc, item.name, item.price, item.qty || 1);
+  }
+  updateOrderSummary && updateOrderSummary();
 };
 
 // Helper: read URL query parameter
@@ -214,13 +222,57 @@ const getCart = () => {
 const saveCart = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
+  updateOrderSummary && updateOrderSummary();
 };
 
 const updateCartCount = () => {
   const cart = getCart();
   const total = cart.reduce((s, item) => s + (item.qty || 1), 0);
+  // Update any textual counter element (optional)
   const el = document.getElementById("cart-count");
   if (el) el.innerText = total;
+
+  // Update all cart icon elements so the CSS ::after uses their `value` attribute
+  // (CSS uses `.fa-cart-shopping::after { content: attr(value); }`)
+  try {
+    const icons = document.querySelectorAll('.fa-cart-shopping');
+    icons.forEach(icon => {
+      icon.setAttribute('value', String(total));
+      // Helpful for accessibility
+      icon.setAttribute('aria-label', `Shopping cart with ${total} item${total === 1 ? '' : 's'}`);
+    });
+  } catch (e) {
+    // ignore if DOM not ready or querySelectorAll fails in some environment
+  }
+};
+
+// Compute and display order summary values (subtotal, taxes, delivery, total)
+const updateOrderSummary = () => {
+  const cart = getCart();
+  const subtotal = cart.reduce((s, item) => s + ((Number(item.price) || 0) * (item.qty || 1)), 0);
+  const DELIVERY = 0; // adjust if you want to apply a delivery fee
+
+  // Default tax rates (can be adjusted):
+  // GST/HST - federal (example: 5% -> 0.05)
+  // PST/QST/RST - provincial (example: Quebec QST 9.975% -> 0.09975)
+  const GST_RATE = 0.05;
+  const PST_RATE = 0.09975;
+
+  const gstAmount = subtotal * GST_RATE;
+  const pstAmount = subtotal * PST_RATE;
+  const total = subtotal + DELIVERY + gstAmount + pstAmount;
+
+  const subtotalEl = document.getElementById('subtotal-amount');
+  const deliveryEl = document.getElementById('delivery-amount');
+  const gstEl = document.getElementById('gst-amount');
+  const pstEl = document.getElementById('pst-amount');
+  const totalEl = document.getElementById('total-amount');
+
+  if (subtotalEl) subtotalEl.innerText = `$${subtotal.toFixed(2)}`;
+  if (deliveryEl) deliveryEl.innerText = `$${DELIVERY.toFixed(2)}`;
+  if (gstEl) gstEl.innerText = `$${gstAmount.toFixed(2)}`;
+  if (pstEl) pstEl.innerText = `$${pstAmount.toFixed(2)}`;
+  if (totalEl) totalEl.innerText = `$${total.toFixed(2)}`;
 };
 
 const addToCart = (product) => {
@@ -229,8 +281,11 @@ const addToCart = (product) => {
   const idx = cart.findIndex((p) => p.name === product.name);
   if (idx > -1) {
     cart[idx].qty = (cart[idx].qty || 1) + 1;
+    // Always notify the user that a product was added (even if quantity increased)
+    alert(`${product.name} has been added to your cart.`);
   } else {
     cart.push({ ...product, qty: 1 });
+    alert(`${product.name} has been added to your cart.`);
   }
   saveCart(cart);
 };
@@ -250,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const createCartProd = (imgSrc, name, price) => {
+const createCartProd = (imgSrc, name, price, qty = 1) => {
   let divProd = document.createElement("div");
   let imgProd = document.createElement("img");
   let descProd = document.createElement("div");
@@ -268,7 +323,7 @@ const createCartProd = (imgSrc, name, price) => {
   imgProd.src = imgSrc;
   nameProd.innerText = name;
   priceProd.innerText = "$" + price;
-  amount.innerText = " 1 ";
+  amount.innerText = ` ${qty} `;
 
   divProd.className = "cart-prod";
   descProd.className = "desc-prod";
@@ -278,6 +333,11 @@ const createCartProd = (imgSrc, name, price) => {
   icons.className = "cart-icons";
   closeIcon.className = "fa-regular fa-rectangle-xmark";
   favoriteIcon.className = "fa-solid fa-heart";
+
+  // make icons accessible for clicking
+  plusIcon.style.cursor = 'pointer';
+  minusIcon.style.cursor = 'pointer';
+  closeIcon.style.cursor = 'pointer';
 
   // Add elements to div
   divProd.appendChild(imgProd);
@@ -292,6 +352,40 @@ const createCartProd = (imgSrc, name, price) => {
   icons.appendChild(favoriteIcon);
   divProd.appendChild(icons);
   prodContCart.appendChild(divProd);
+
+  // Event handlers for plus/minus/remove
+  plusIcon.addEventListener('click', () => {
+    const cart = getCart();
+    const idx = cart.findIndex(p => p.name === name);
+    if (idx > -1) {
+      cart[idx].qty = (cart[idx].qty || 1) + 1;
+      saveCart(cart);
+      displayProdCart();
+    }
+  });
+
+  minusIcon.addEventListener('click', () => {
+    const cart = getCart();
+    const idx = cart.findIndex(p => p.name === name);
+    if (idx > -1) {
+      cart[idx].qty = (cart[idx].qty || 1) - 1;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+      saveCart(cart);
+      displayProdCart();
+    }
+  });
+
+  closeIcon.addEventListener('click', () => {
+    const cart = getCart();
+    const idx = cart.findIndex(p => p.name === name);
+    if (idx > -1) {
+      cart.splice(idx, 1);
+      saveCart(cart);
+      displayProdCart();
+    }
+  });
 };
 
 // Function for mobile menu
@@ -460,5 +554,51 @@ const hamburgerMenu = () => {
       }
     });
   }
+})();
+
+// Modal checkout behavior (moved from shop.html)
+(function(){
+  // run after DOM ready; but safe as script is deferred in HTML
+  const openBtn = document.getElementById('open-checkout');
+  const backdrop = document.getElementById('checkout-backdrop');
+  const cancelBtn = document.getElementById('cancel-checkout');
+  const form = document.getElementById('checkout-form');
+  const msg = document.getElementById('checkout-msg');
+
+  const openModal = () => {
+    if (!backdrop) return;
+    backdrop.style.display = 'flex';
+    const first = document.getElementById('full-name');
+    if (first) first.focus();
+  };
+  const closeModal = () => {
+    if (!backdrop) return;
+    backdrop.style.display = 'none';
+    if (msg) msg.style.display = 'none';
+  };
+
+  if (openBtn) openBtn.addEventListener('click', openModal);
+  if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeModal(); });
+
+  if (form) form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const cart = (function(){ try { return JSON.parse(localStorage.getItem('cart')||'[]'); } catch(e){ return []; }})();
+    if (!cart || cart.length === 0) { alert('Your cart is empty.'); closeModal(); return; }
+
+    if (msg) {
+      msg.innerText = 'Thank you! Your order has been placed.';
+      msg.style.display = 'block';
+    }
+
+    try { localStorage.removeItem('cart'); } catch(e){}
+    if (typeof updateCartCount === 'function') updateCartCount();
+    if (typeof updateOrderSummary === 'function') updateOrderSummary();
+
+    setTimeout(()=>{
+      closeModal();
+      window.location.href = 'index.html';
+    }, 1200);
+  });
 })();
 

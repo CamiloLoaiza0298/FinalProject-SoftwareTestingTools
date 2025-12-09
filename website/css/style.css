@@ -225,6 +225,24 @@ grid-layout {
     margin: 0;
 }
 
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 /* Products Section */
 .trending-section {
     display: flex;
@@ -347,6 +365,15 @@ grid-layout {
     max-width: 480px;
     width: 90%;
     margin: 1rem auto;
+}
+
+.form-card a button{
+    width: 100%;
+    background-color: #4cd5ff;
+}
+
+.form-card a button:hover{
+    background-color: #023d55;
 }
 
 .register-form, .login-form {
@@ -494,6 +521,34 @@ grid-layout {
     justify-content: space-between;
     gap: 0.75rem;
 }
+
+/* Modal styles for checkout popup (moved from shop.html) */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal {
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 6px;
+    width: 95%;
+    max-width: 520px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+.modal h3 { margin-bottom: 0.5rem; color: #1d1c29; }
+.modal label { display:block; font-weight:600; margin-top:0.5rem; }
+.modal input[type="text"], .modal input[type="email"], .modal input[type="tel"] {
+    width:100%;
+    padding:0.5rem;
+    border:1px solid #cfcfcf;
+    border-radius:4px;
+}
+.modal .success { color: green; font-weight:700; margin-top:0.5rem; }
 
 .amount-div {
     display: flex;

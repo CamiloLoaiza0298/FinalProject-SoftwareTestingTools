@@ -14,7 +14,7 @@
     <link rel="icon" href="media/logo.png" type="image/png" />
     <title>Impresaurios 3D Printing</title>
   </head>
-  <body onload="displayProducts()">
+  <body onload="displayProdCart(); updateOrderSummary && updateOrderSummary();">
     <!-- Navbar -->
     <nav class="nav-container">
       <!-- Website nav-menu -->
@@ -74,33 +74,90 @@
         <div class="shopping-cart">
           <h2 class="cart-title">SHOPPING CART</h2>
           <div class="cart-prod-container" id="prod-cart"></div>
-          <button>Continue Shopping</button>
+          <a href="products.html"><button>Continue Shopping</button></a>
         </div>
         <div class="order-summary">
           <h2 class="cart-title">ORDER SUMMARY</h2>
           <div class="order-summary-column">
             <div class="order-summary-row">
               <p>Subtotal</p>
-              <p>$898</p>
+              <p id="subtotal-amount">$0.00</p>
             </div>
             <div class="order-summary-row">
               <p>Delivery</p>
-              <p style="text-decoration: line-through">$29</p>
+              <p><span style="text-decoration: line-through">$29</span> <span id="delivery-amount">$0.00</span> Delivery fee in Montreal</p>
             </div>
             <div class="order-summary-row">
-              <p>Add a promo code</p>
-              <i class="fa-solid fa-chevron-down"></i>
+              <p>GST/HST</p>
+              <p id="gst-amount">$0.00</p>
+            </div>
+            <div class="order-summary-row">
+              <p>PST/QST/RST</p>
+              <p id="pst-amount">$0.00</p>
             </div>
             <div class="order-summary-row">
               <p>Total</p>
-              <p>$898</p>
+              <p id="total-amount">$0.00</p>
             </div>
-            <div class="order-summary-column" id="buttons-column">
-              <button class="order-summary-button">CHECKOUT</button>
+              <div class="order-summary-column" id="buttons-column">
+                <button id="open-checkout" class="order-summary-button">PROCEED TO CHECKOUT</button>
             </div>
           </div>
         </div>
       </div>
+
+    
+    <!-- Checkout Modal (popup) -->
+    <div id="checkout-backdrop" class="modal-backdrop" role="dialog" aria-modal="true">
+      <div class="modal" role="document">
+        <h3>Checkout</h3>
+        <form id="checkout-form">
+          <label for="full-name">Full name</label>
+          <input id="full-name" class="modal-input" type="text" required />
+
+          <label for="email">Email</label>
+          <input id="email" class="modal-input" type="email" required />
+
+          <label for="address">Address</label>
+          <input id="address" class="modal-input" type="text" required />
+
+          <div style="display:flex;gap:.5rem;">
+            <div style="flex:1">
+              <label for="city">City</label>
+              <input id="city" class="modal-input" type="text" required />
+            </div>
+            <div style="width:140px">
+              <label for="postal">Postal code</label>
+              <input id="postal" class="modal-input" type="text" required />
+            </div>
+          </div>
+
+          <label for="card-name">Cardholder name</label>
+          <input id="card-name" class="modal-input" type="text" required />
+
+          <div style="display:flex;gap:.5rem;">
+            <div style="flex:1">
+              <label for="card-number">Card number</label>
+              <input id="card-number" class="modal-input" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" required />
+            </div>
+            <div style="width:120px">
+              <label for="expiry">Expiry</label>
+              <input id="expiry" class="modal-input" type="text" placeholder="MM/YY" required />
+            </div>
+            <div style="width:80px">
+              <label for="cvv">CVV</label>
+              <input id="cvv" class="modal-input" type="text" inputmode="numeric" required />
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:flex-end;gap:.5rem;margin-top:1rem;">
+            <button type="button" id="cancel-checkout">Cancel</button>
+            <button type="submit">Place order</button>
+          </div>
+          <p id="checkout-msg" class="success" style="display:none;margin-top:.5rem;color:green;font-weight:700"></p>
+        </form>
+      </div>
+    </div>
 
     </main>
     <!-- Footer -->
