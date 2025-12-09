@@ -522,7 +522,7 @@ grid-layout {
     gap: 0.75rem;
 }
 
-/* Modal styles for checkout popup (moved from shop.html) */
+/* Modal styles for checkout popup */
 .modal-backdrop {
     position: fixed;
     inset: 0;

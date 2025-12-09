@@ -556,7 +556,7 @@ const hamburgerMenu = () => {
   }
 })();
 
-// Modal checkout behavior (moved from shop.html)
+// Modal checkout behavior
 (function(){
   // run after DOM ready; but safe as script is deferred in HTML
   const openBtn = document.getElementById('open-checkout');
