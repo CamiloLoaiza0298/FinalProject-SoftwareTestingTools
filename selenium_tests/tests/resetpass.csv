@@ -1,0 +1,11 @@
+username,code,password,confirm_password,expected,comment
+testuser1,1234,Password.123,Password.123,valid,valid user code and password
+testuser1,wrongcode,Password.123,Password.123,invalid,invalid code
+testuser2,1234,Password.123,Password.123,invalid,invalid user
+testuser1,5678,Password.123,Password.1234,invalid,valid user but valid code from another user
+testuser1,1234,Password.123,Password,invalid,passwords do not match
+testuser1,1234,pass,pass,invalid,password does'nt meet criteria
+testuser1,1234,password.123,password.123,invalid,password missing uppercase letter
+testuser1,1234,PASSWORD.123,PASSWORD.123,invalid,password missing lowercase letter
+testuser1,1234,Password123,Password123,invalid,password missing special character
+testuser1,1234,Password.,Password.,invalid,password missing number
