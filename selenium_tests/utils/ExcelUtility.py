@@ -1,16 +1,30 @@
-import openpyxl
+import csv
 
-class ExcelUtility:
+test_results = []
 
-    @staticmethod
-    def read_cell(path, sheet, row, col):
-        workbook = openpyxl.load_workbook(path)
-        sheet = workbook[sheet]
-        return sheet.cell(row=row, column=col).value
+def add_result(
+    scenario,
+    test_id,
+    description,
+    steps,
+    expected,
+    actual,
+    status,
+    testdata="Not required"
+):
+    test_results.append({
+        "Test Case Scenario": scenario,
+        "Test Case ID": test_id,
+        "Testcase Description": description,
+        "Testcase Steps": steps,
+        "Expected Result": expected,
+        "Actual Result": actual,
+        "Testdata": testdata,
+        "Status": status
+    })
 
-    @staticmethod
-    def write_cell(path, sheet, row, col, value):
-        workbook = openpyxl.load_workbook(path)
-        sheet = workbook[sheet]
-        sheet.cell(row=row, column=col).value = value
-        workbook.save(path)
+def write_results_to_csv():
+    with open("test_results.csv", "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=test_results[0].keys())
+        writer.writeheader()
+        writer.writerows(test_results)
