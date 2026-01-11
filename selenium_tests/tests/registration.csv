@@ -1,0 +1,9 @@
+username,email,age,password,confirm_password,expected,comment
+testuser1,testuser1@example.com,25,Password.123,Password.123,valid,valid user age and password
+testuser2,testuser2@example.com,10,Password.123,Password.123,invalid,valid user and password but invalid age
+testuser3,testuser3@example.com,20,password,Password.123,invalid,valid user and age but passwords do not match
+testuser4,testuser4@example.com,25,password,password,invalid,valid user and age but password does'nt meet criteria
+testuser5,testuser5@example.com,30,password.123,password.123,invalid,valid user and age but password missing uppercase letter
+testuser6,testuser6@example.com,22,PASSWORD.123,PASSWORD.123,invalid,valid user and age but password missing lowercase letter
+testuser7,testuser7@example.com,25,Password123,Password123,invalid,valid user and age but password missing special character
+testuser8,testuser8@example.com,25,Password.,Password.,invalid,valid user and age but password missing number
