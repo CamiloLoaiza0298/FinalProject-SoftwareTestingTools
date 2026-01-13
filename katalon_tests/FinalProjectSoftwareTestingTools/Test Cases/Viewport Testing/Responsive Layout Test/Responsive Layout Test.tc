@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Test responsive layout across different viewport sizes using execution profiles</description>
+   <name>Responsive Layout Test</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>550e8400-e29b-41d4-a716-446655440003</testCaseGuid>
+</TestCaseEntity>

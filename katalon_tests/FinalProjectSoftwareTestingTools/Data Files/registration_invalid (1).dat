@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>registration_invalid (1)</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>8c6cb916-a087-4ed6-b6ba-dd177735705e</dataFileGUID>
+   <dataSourceUrl>C:\Users\camil\Documents\Code\Code\Github\FinalProject-SoftwareTestingTools\katalon_tests\FinalProjectSoftwareTestingTools\Data Files\registration_invalid.xlsx</dataSourceUrl>
+   <driver>ExcelFile</driver>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName>registration_invalid</sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

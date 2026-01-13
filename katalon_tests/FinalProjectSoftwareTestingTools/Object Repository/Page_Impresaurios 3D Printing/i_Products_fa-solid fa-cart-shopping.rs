@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>i_Products_fa-solid fa-cart-shopping</name>
+   <tag></tag>
+   <elementGuidId>37ffec25-232a-4a7f-811c-f5001f77948b</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//i[@value='1']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>i.fa-solid.fa-cart-shopping</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>i</value>
+      <webElementGuid>9113e300-1685-4d5a-ab00-93a16a4fea9c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>fa-solid fa-cart-shopping</value>
+      <webElementGuid>0b6bf09e-b2c8-4e68-9e68-6df3cd3306c1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>value</name>
+      <type>Main</type>
+      <value>1</value>
+      <webElementGuid>c141cdad-ee3a-47bb-bec9-ff05908b15ff</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-hidden</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>e6cd55ae-100b-4874-8d7c-22c7180c42fa</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-label</name>
+      <type>Main</type>
+      <value>Shopping cart with 1 item</value>
+      <webElementGuid>a07dba2f-11f5-4239-82e2-f96fa3f218db</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>/html[1]/body[1]/nav[@class=&quot;nav-container&quot;]/div[@class=&quot;nav-web&quot;]/span[@class=&quot;user-wrapper&quot;]/a[2]/i[@class=&quot;fa-solid fa-cart-shopping&quot;]</value>
+      <webElementGuid>74f6865b-0ed9-4753-bddb-50fba5224117</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//i[@value='1']</value>
+      <webElementGuid>be8d5d18-e778-4501-b551-f934f922e129</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//a[2]/i</value>
+      <webElementGuid>4843f292-b71d-41e3-a697-118440584633</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

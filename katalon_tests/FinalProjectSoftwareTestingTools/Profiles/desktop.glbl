@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description>Desktop resolution profile (1920x1080)</description>
+   <name>desktop</name>
+   <tag></tag>
+   <defaultProfile>false</defaultProfile>
+   <globalVariables>
+      <globalVariable>
+         <description>Browser width for desktop</description>
+         <name>VIEWPORT_WIDTH</name>
+         <value>1920</value>
+      </globalVariable>
+      <globalVariable>
+         <description>Browser height for desktop</description>
+         <name>VIEWPORT_HEIGHT</name>
+         <value>1080</value>
+      </globalVariable>
+   </globalVariables>
+</GlobalVariableEntities>

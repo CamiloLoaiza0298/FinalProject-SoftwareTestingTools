@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Shop Page Load (No items)</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>4da7b9cb-eda4-42e6-92d9-06c4710e002a</testCaseGuid>
+</TestCaseEntity>

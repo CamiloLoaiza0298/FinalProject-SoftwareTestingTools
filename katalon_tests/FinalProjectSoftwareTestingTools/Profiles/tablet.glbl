@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description>Tablet resolution profile (768x1024)</description>
+   <name>tablet</name>
+   <tag></tag>
+   <defaultProfile>false</defaultProfile>
+   <globalVariables>
+      <globalVariable>
+         <description>Browser width for tablet</description>
+         <name>VIEWPORT_WIDTH</name>
+         <value>768</value>
+      </globalVariable>
+      <globalVariable>
+         <description>Browser height for tablet</description>
+         <name>VIEWPORT_HEIGHT</name>
+         <value>1024</value>
+      </globalVariable>
+   </globalVariables>
+</GlobalVariableEntities>

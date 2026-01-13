@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Register Page Load</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>728a9da9-73ad-4ec9-908d-b5cc6744b1a3</testCaseGuid>
+</TestCaseEntity>

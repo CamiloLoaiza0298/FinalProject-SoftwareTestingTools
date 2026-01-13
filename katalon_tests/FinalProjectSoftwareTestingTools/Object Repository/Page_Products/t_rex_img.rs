@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>t_rex_img</name>
+   <tag></tag>
+   <elementGuidId>5a4388b0-80a8-4949-9c5a-01fe6da5857a</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='products']/div/img</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>div.img-products > img</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@src = 'media/dino.jpg']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>BASIC</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>b608e9e6-7446-4900-817d-56c4a0f5c010</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>media/dino.jpg</value>
+      <webElementGuid>65d0d983-e48c-4dbd-90b3-30fa8b9891d8</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;products&quot;)/div[@class=&quot;img-products&quot;]/img[1]</value>
+      <webElementGuid>9f62f24f-ff38-4f9d-b875-dcf8647443cf</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='products']/div/img</value>
+      <webElementGuid>443bd645-58ed-48b1-b512-81113f6a327d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div/div/img</value>
+      <webElementGuid>1b63e3cb-7545-4d55-b285-1aa714e39253</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//img[@src = 'media/dino.jpg']</value>
+      <webElementGuid>53c27719-6daf-4a24-b875-17a1a6e667ab</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

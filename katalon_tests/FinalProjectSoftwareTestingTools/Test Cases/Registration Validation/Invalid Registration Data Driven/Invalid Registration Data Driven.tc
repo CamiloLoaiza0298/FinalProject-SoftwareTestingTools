@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Data-driven test for registration form validation with invalid data</description>
+   <name>Invalid Registration Data Driven</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>550e8400-e29b-41d4-a716-446655440001</testCaseGuid>
+</TestCaseEntity>

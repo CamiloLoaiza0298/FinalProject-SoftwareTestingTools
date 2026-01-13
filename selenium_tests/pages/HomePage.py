@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils.ExcelUtility import add_result
 
 class HomePage:
 
@@ -40,4 +41,18 @@ class HomePage:
             print("Clicked the play/pause button.")
         except Exception as e:
             print(f"Could not click play button: {e}")
+            add_result(
+                scenario="Login Test",
+                test_id=f"TCI001",
+                description="Interact with video inside iframe",
+                steps="""1. Navigate to home page
+2. Switch to iframe containing video
+3. Click play button on video
+4. Switch back to default content
+5. Click on Products link""",
+                expected="valid",
+                actual="Invalid",
+                status="Fail",
+                testdata="N/A"
+            )
 

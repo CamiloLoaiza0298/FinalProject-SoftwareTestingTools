@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Smoke test to verify home page loads and key elements are visible</description>
+   <name>Home Page Load</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>550e8400-e29b-41d4-a716-446655440000</testCaseGuid>
+</TestCaseEntity>

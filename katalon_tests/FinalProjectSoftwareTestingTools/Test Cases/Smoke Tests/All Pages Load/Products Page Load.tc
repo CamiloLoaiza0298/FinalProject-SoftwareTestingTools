@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Products Page Load</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>c8e1fdb5-629d-4ebd-b955-a8acd7690e9b</testCaseGuid>
+</TestCaseEntity>
