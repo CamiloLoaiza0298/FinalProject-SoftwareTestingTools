@@ -1,3 +1,9 @@
+#----------------------------------------------------- 
+#Assignment: 420-TZ4-GX SOFTWARE TESTING TOOLS
+#Written by: Juan Camilo Loaiza Alarcon - 6805001
+#This project is a software testing suite for a web application; using HTML, CSS and JavaScript for the webpage, and selenium and katalon for automated testing.
+#-----------------------------------------------------
+
 from pages.ForgotPasswordPage import ForgotPasswordPage
 import os
 import csv
@@ -16,13 +22,16 @@ with open(csv_path, 'r') as file:
 
 @pytest.mark.parametrize("username,code,password,confirm_password,expected,comment,testcase_id", test_data)
 def test_reset_password(driver, username, code, password, confirm_password, expected, comment, testcase_id):
+    # Open forgot password page and try to reset password
     file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../website/forgot-password.html'))
     driver.get(f"file://{file_path}")
 
     register = ForgotPasswordPage(driver)
     register.reset(username, code, password, confirm_password)
+    # Check if reset is valid or invalid
     if expected == "valid":
-        assert "login" in driver.current_url
+        assert "login" in driver.current_url  # Should redirect to login page
+        # Record result in Excel
         add_result(
                     scenario="Test Reset Password",
                     test_id=f"TCR00{testcase_id}",
@@ -37,7 +46,8 @@ def test_reset_password(driver, username, code, password, confirm_password, expe
                     testdata=f"Username: {username}, Code: {code}, Password: {password}, Confirm Password: {confirm_password}"
                 )
     else:
-        assert "forgot-password" in driver.current_url
+        assert "forgot-password" in driver.current_url  # Should stay on forgot password page
+        # Record result in Excel
         add_result(
                     scenario="Test Reset Password",
                     test_id=f"TCR00{testcase_id}",

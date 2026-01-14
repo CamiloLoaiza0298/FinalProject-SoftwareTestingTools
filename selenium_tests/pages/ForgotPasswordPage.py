@@ -1,3 +1,9 @@
+#----------------------------------------------------- 
+#Assignment: 420-TZ4-GX SOFTWARE TESTING TOOLS
+#Written by: Juan Camilo Loaiza Alarcon - 6805001
+#This project is a software testing suite for a web application; using HTML, CSS and JavaScript for the webpage, and selenium and katalon for automated testing.
+#-----------------------------------------------------
+
 from selenium.webdriver.common.by import By
 import time
 

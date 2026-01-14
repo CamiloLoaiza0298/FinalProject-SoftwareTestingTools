@@ -1,8 +1,16 @@
+/*--  ----------------------------------------------------- 
+Assignment: 420-TZ4-GX SOFTWARE TESTING TOOLS
+Written by: Juan Camilo Loaiza Alarcon - 6805001
+This project is a software testing suite for a web application; using HTML, CSS and JavaScript for the webpage, and selenium and katalon for automated testing.
+---------------------------------------------------- */
+
 // Variables
 const prodContProd = document.querySelector("#products");
 const prodContIndex = document.querySelector("#prod-index");
 const prodContCart = document.querySelector("#prod-cart");
 
+// Main JS for shop page functionality
+// Handles product listing, cart, and checkout modal
 const prod1 = {
   imgSrc: "media/dino.jpg",
   name: "Articulated T-Rex",

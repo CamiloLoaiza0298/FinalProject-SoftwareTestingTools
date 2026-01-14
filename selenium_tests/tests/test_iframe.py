@@ -1,3 +1,9 @@
+#----------------------------------------------------- 
+#Assignment: 420-TZ4-GX SOFTWARE TESTING TOOLS
+#Written by: Juan Camilo Loaiza Alarcon - 6805001
+#This project is a software testing suite for a web application; using HTML, CSS and JavaScript for the webpage, and selenium and katalon for automated testing.
+#-----------------------------------------------------
+
 from pages.HomePage import HomePage
 import os
 import csv
@@ -5,9 +11,8 @@ from utils.ExcelUtility import add_result
 from selenium.webdriver.common.by import By
 import pytest
 
-
-#Write a test that locates an element inside an iframe, switches context to interact with it, and then switches back to the default content (link to youtube video)
 def test_iframe_interaction(driver):
+        # Open home page and interact with video iframe
     file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../website/index.html'))
     driver.get(f"file://{file_path}")
 
@@ -16,7 +21,7 @@ def test_iframe_interaction(driver):
     # Switch to iframe
     home.switch_to_video_iframe()
 
-    # Interact with element inside iframe (e.g., play video)
+    # Interact with element inside iframe
 
     home.interact_with_video(driver)
 

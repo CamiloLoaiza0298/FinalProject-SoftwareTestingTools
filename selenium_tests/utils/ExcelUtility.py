@@ -1,3 +1,9 @@
+#----------------------------------------------------- 
+#Assignment: 420-TZ4-GX SOFTWARE TESTING TOOLS
+#Written by: Juan Camilo Loaiza Alarcon - 6805001
+#This project is a software testing suite for a web application; using HTML, CSS and JavaScript for the webpage, and selenium and katalon for automated testing.
+#-----------------------------------------------------
+
 from openpyxl import Workbook
 from openpyxl.styles import Font, Border, Side, Alignment
 import openpyxl
@@ -5,6 +11,7 @@ import openpyxl
 test_results = []
 
 def add_result(
+    # Add a test result to the list
     scenario,
     test_id,
     description,
@@ -26,6 +33,7 @@ def add_result(
     })
 
 def write_results_to_excel():
+    # Write all test results to an Excel file (with formatting)
     if not test_results:
         print("No test results to write.")
         return
@@ -72,5 +80,6 @@ def write_results_to_excel():
         else:
             ws.column_dimensions[column_letter].width = max_length + 2
     
-    wb.save("test_results.xlsx")
-    print("\nTest results written to test_results.xlsx with formatting.")
+    output_path = "../results/selenium_test_results.xlsx"
+    wb.save(output_path)
+    print(f"\nTest results written to {output_path} with formatting.")

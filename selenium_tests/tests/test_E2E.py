@@ -1,3 +1,9 @@
+#----------------------------------------------------- 
+#Assignment: 420-TZ4-GX SOFTWARE TESTING TOOLS
+#Written by: Juan Camilo Loaiza Alarcon - 6805001
+#This project is a software testing suite for a web application; using HTML, CSS and JavaScript for the webpage, and selenium and katalon for automated testing.
+#-----------------------------------------------------
+
 from pages.HomePage import HomePage
 from pages.ProductsPage import ProductsPage
 from pages.LoginPage import LoginPage
@@ -10,10 +16,12 @@ from utils.ExcelUtility import add_result
 class TestE2E:
     @pytest.fixture(autouse=True)
     def setup(self, driver):
+        # Open the homepage before each test
         self.driver = driver
         file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../website/index.html'))
         self.driver.get(f"file://{file_path}")
 
+    # Test different login and purchase scenarios
     @pytest.mark.parametrize("username,password,text,fullname,email,address,city,postalcode,cardholder,cardnumber,expiry,cvv,expected,testcase_id", [
         ("testuser1", "password123", "Pot", "Juan Camilo Loaiza Alarcon", "jcloaizaa@example.com", "123 Av. Example", "Montreal", "12345", "Juan Camilo Loaiza Alarcon", "12345678910111213", "12/25", "123", "valid", 1),
         ("testuser1", "password123", "Lamp", "Juan Camilo Loaiza Alarcon", "jcloaizaa@example.com", "123 Av. Example", "Montreal", "12345", "Juan Camilo Loaiza Alarcon", "12345678910111213", "12/25", "123", "invalid search", 2),
@@ -21,16 +29,18 @@ class TestE2E:
     ])
 
     def test_login_and_navigate(self, username, password, text, fullname, email, address, city, postalcode, cardholder, cardnumber, expiry, cvv, expected, testcase_id):
+        # Start from the home page
         home_page = HomePage(self.driver)
         
-        # Navigate to Login Page
+        # Go to login page
         home_page.click_login_link()
         
-        # Perform Login
+        # Try to log in
         login_page = LoginPage(self.driver)
         login_page.login(username, password)
 
         if expected == "invalid login":
+            # Should stay on login page if login fails
             assert "login" in self.driver.current_url, "Expected to remain on login page for invalid credentials"
             add_result(
                 scenario="Test E2E",
@@ -56,6 +66,7 @@ class TestE2E:
             time.sleep(2)  # Wait to observe the search action
 
             if expected == "invalid search":
+                # Should not find product if search is invalid
                 assert not products_page.is_product_found(), "Expected no products for invalid search"
                 add_result(
                     scenario="Test E2E",
@@ -75,17 +86,16 @@ class TestE2E:
                     testdata=f"Username: {username}, Password: {password}, Search Text: {text}"
                 )
             else:
+                # Add product to cart and checkout
                 products_page.add_to_cart()
-
                 products_page.accept_alert()
-                
-                # Navigate to Cart Page
+                # Go to cart
                 home_page.click_cart_link()
 
                 shop_page = ShopPage(self.driver)
                 shop_page.click_checkout()
 
-                # Fill in checkout details
+                # Fill out checkout form
                 shop_page.fill_checkout_details(
                     fullname, email, address, city, postalcode, cardholder, cardnumber, expiry, cvv
                 )

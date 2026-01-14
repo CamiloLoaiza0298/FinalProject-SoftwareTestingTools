@@ -35,7 +35,7 @@ pip install pytest selenium webdriver-manager openpyxl
 cd selenium_tests
 pytest
 ```
-If you want to use a specific browser (Firefox or Chrome) you can use these commands:
+If you want to use a specific browser (Firefox or Chrome) you can use these commands instead:
 
 ```bash
 cd selenium_tests
@@ -50,6 +50,7 @@ pytest --browser firefox
 - Notes:
 	- The Selenium tests are located in `selenium_tests/tests/` and use utilities in `selenium_tests/utils/` (for example `WebDriverFactory.py`).
 	- Ensure your local browser version is compatible with the installed driver.
+	- The report generated with the selenium tests is saved in the `results/` folder.
 
 **Katalon Studio**
 - Prerequisites: Katalon Studio (recommended recent stable release) and Java JDK if required by your Katalon version.
