@@ -11,7 +11,7 @@
    <modifiedEdition>ENTERPRISE</modifiedEdition>
    <modifiedVersion>10.4.2</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>C:\Users\camil\Documents\Code\Code\Github\FinalProject-SoftwareTestingTools\katalon_tests\FinalProjectSoftwareTestingTools\FinalProjectSoftwareTestingTools.prj</projectFileLocation>
+   <projectFileLocation>/home/camilo/Documents/Code/FinalProject-SoftwareTestingTools/katalon_tests/FinalProjectSoftwareTestingTools/FinalProjectSoftwareTestingTools.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>
